@@ -7,12 +7,15 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Data from './Class.json'
+import Data from './classData/Class.json'
 
 function ER_webpage() {
 
 
+
+
     return (
+        
         <div className="ER_webpage">
 
             <Row className="g-2">
@@ -25,13 +28,14 @@ function ER_webpage() {
                 </Col>
 
                 <Col md>
-                    <div className="startingClass">  
+                    <div className="startingClass">
                         <FloatingLabel controlId="floatingSelect" label="Starting Class">
                             <Form.Group as={Col} controlId="formGridPassword">
                                 <Form.Control as="select">
                                     {
-                                        Data.map(post =>{
-                                            return(
+                                        Data.map(post => {
+                                            
+                                            return (
                                                 <option>{post.name}</option> //Grabs name data from json file
                                             )
                                         })
@@ -55,38 +59,55 @@ function ER_webpage() {
 
 
             <div className='attributePoint'>
+            
                 <Container>
                     <Row>
                         <Col>
                             <Form.Label>Attribute Points</Form.Label>
                             <ListGroup horizontal>
+                                
                                 <ListGroup.Item>Vigor</ListGroup.Item>
-                                <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                {
+                                    Data.map(classStat => {
+                                        return (
+                                            <ListGroup.Item><NumericInput min={0} max={99} value={classStat.stats.vigor}></NumericInput></ListGroup.Item> 
+                                            // I can read data from stat
+                                            // TODO: figure out how to get data to display that of the correct class that is chosen.
+                                        )
+                                    })
+                                }
                             </ListGroup>
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Mind</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Endurance</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+                            
                             <ListGroup horizontal>
                                 <ListGroup.Item>Strength</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Dexterity</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Intelligence</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Faith</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
+                            
                             <ListGroup horizontal>
                                 <ListGroup.Item>Arcane</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
