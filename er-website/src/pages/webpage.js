@@ -8,6 +8,8 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
+import { Link } from 'react-router-dom';
+import { Button } from 'bootstrap';
 
 function ER_webpage() {
 
@@ -17,6 +19,14 @@ function ER_webpage() {
     return (
         
         <div className="ER_webpage">
+            <Row className='header'>
+                <Col md>
+                    <h1>Elden Ring Character Builder</h1>
+                </Col>
+                <Col md>
+                    <Link to='/Login'><button>login</button></Link>
+                </Col>
+            </Row>
 
             <Row className="g-2">
                 <Col md>
