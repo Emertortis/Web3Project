@@ -11,13 +11,22 @@ import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
 import { Button } from 'bootstrap';
 
+
+
+
 function ER_webpage() {
 
+    function getTargetProfile(profileName) {    
+        
+        const profile = Data.filter(profiles => { return profiles.name === "Hero"}
+        )
+        return profile
+    }
 
 
 
     return (
-        
+
         <div className="ER_webpage">
             <Row className='header'>
                 <Col md>
@@ -40,13 +49,13 @@ function ER_webpage() {
                 <Col md>
                     <div className="startingClass">
                         <FloatingLabel controlId="floatingSelect" label="Starting Class">
-                            <Form.Group as={Col} controlId="formGridPassword">
-                                <Form.Control as="select">
+                            <Form.Group as={Col} controlId="dropdownItem">
+                                <Form.Control as="select" >
                                     {
                                         Data.map(post => {
-                                            
+
                                             return (
-                                                <option>{post.name}</option> //Grabs name data from json file
+                                                <option >{post.name}</option> //Grabs name data from json file
                                             )
                                         })
                                     }
@@ -56,8 +65,6 @@ function ER_webpage() {
                     </div>
                 </Col>
             </Row>
-
-
 
             <div className='playerLevel'>
                 <ListGroup horizontal>
@@ -69,22 +76,20 @@ function ER_webpage() {
 
 
             <div className='attributePoint'>
-            
+
                 <Container>
                     <Row>
                         <Col>
                             <Form.Label>Attribute Points</Form.Label>
                             <ListGroup horizontal>
-                                
+
                                 <ListGroup.Item>Vigor</ListGroup.Item>
                                 {
-                                    Data.map(classStat => {
-                                        return (
-                                            <ListGroup.Item><NumericInput min={0} max={99} value={classStat.stats.vigor}></NumericInput></ListGroup.Item> 
+
+                                            <ListGroup.Item><NumericInput min={0} max={99} value={getTargetProfile(Data.map(post => post.stats.vigor))}></NumericInput></ListGroup.Item> 
                                             // I can read data from stat
                                             // TODO: figure out how to get data to display that of the correct class that is chosen.
-                                        )
-                                    })
+
                                 }
                             </ListGroup>
 
@@ -97,7 +102,7 @@ function ER_webpage() {
                                 <ListGroup.Item>Endurance</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
-                            
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Strength</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
@@ -117,7 +122,7 @@ function ER_webpage() {
                                 <ListGroup.Item>Faith</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
                             </ListGroup>
-                            
+
                             <ListGroup horizontal>
                                 <ListGroup.Item>Arcane</ListGroup.Item>
                                 <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
