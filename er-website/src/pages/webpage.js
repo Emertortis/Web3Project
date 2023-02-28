@@ -16,14 +16,31 @@ import { Button } from 'bootstrap';
 
 function ER_webpage() {
 
-    function getTargetProfile(profileName) {    
+    const getDropdownValue = () => {
         
-        const profile = Data.filter(profiles => { return profiles.name === "Hero"}
-        )
-        return profile
-    }
+        //Finds name of dropdown
+        const value = "Hero";
+        return value;
+      };
+
+      const getDropdownStat= () => {
+        
+        const filteredProducts = Data.filter(statValue => statValue.vigor === statValue.name.match(value)).map(post=>(post.vigor))
+        return filteredProducts;
+      }; 
+
+      const [value, setValue] = useState(getDropdownValue);
+      const [filteredProducts, setfilteredProducts] = useState(getDropdownStat);
+    
+      const handleChange = (e) => {
+        setValue(e.target.value);
+      };
+      console.log(filteredProducts)
 
 
+
+
+      
 
     return (
 
@@ -50,18 +67,23 @@ function ER_webpage() {
                     <div className="startingClass">
                         <FloatingLabel controlId="floatingSelect" label="Starting Class">
                             <Form.Group as={Col} controlId="dropdownItem">
-                                <Form.Control as="select" >
+                                <Form.Control as="select" value={value} onChange={handleChange} >
                                     {
                                         Data.map(post => {
 
                                             return (
-                                                <option >{post.name}</option> //Grabs name data from json file
+                                                
+                                                <option>{post.name}</option> //Grabs name data from json file
+                                                
                                             )
+                                            
                                         })
                                     }
                                 </Form.Control>
                             </Form.Group>
                         </FloatingLabel>
+                        <p>{`You selected ${value}`}</p>
+                        <p>{`${value}'s stat is ${filteredProducts} `}</p>
                     </div>
                 </Col>
             </Row>
@@ -81,16 +103,13 @@ function ER_webpage() {
                     <Row>
                         <Col>
                             <Form.Label>Attribute Points</Form.Label>
+
                             <ListGroup horizontal>
-
                                 <ListGroup.Item>Vigor</ListGroup.Item>
-                                {
-
-                                            <ListGroup.Item><NumericInput min={0} max={99} value={getTargetProfile(Data.map(post => post.stats.vigor))}></NumericInput></ListGroup.Item> 
-                                            // I can read data from stat
-                                            // TODO: figure out how to get data to display that of the correct class that is chosen.
-
-                                }
+                                        {
+                                            Data.filter(statValue=> statValue.name.match(value)===statValue.vigor).map(post=>
+                                                <ListGroup.Item><NumericInput min={0} max={99} value={post.vigor} onChange={handleChange}/></ListGroup.Item>
+                                            )}
                             </ListGroup>
 
                             <ListGroup horizontal>
