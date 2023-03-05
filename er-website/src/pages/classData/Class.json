@@ -21,7 +21,7 @@
             "name": "Warrior",
             "image": "https://eldenring.fanapis.com/images/classes/17f69b2dd76l0i32gljr3f62pkzhjo.png",
             "description": "A twinblade wielding warrior from a nomadic tribe. An origin of exceptional technique",
-          
+            
                 "level": "8",
                 "vigor": "11",
                 "mind": "12",
@@ -38,7 +38,6 @@
             "name": "Astrologer",
             "image": "https://eldenring.fanapis.com/images/classes/17f69874f7bl0i32gmqaffmbfral8f.png",
             "description": "A scholar who reads fate in the stars. Heir to the school of glintstone sorcery",
-            "stats": {
                 "level": "6",
                 "vigor": "9",
                 "mind": "15",
@@ -48,14 +47,13 @@
                 "intelligence": "16",
                 "faith": "7",
                 "arcane": "9"
-            }
+            
         },
         {
             "id": "17f69d43011l0i32gojnjjs9mcg0k",
             "name": "Bandit",
             "image": "https://eldenring.fanapis.com/images/classes/17f69d43011l0i32gojnjjs9mcg0k.png",
             "description": "A dangerous bandit who strikes for weak points. Excels at ranged combat with bows",
-            "stats": {
                 "level": "5",
                 "vigor": "10",
                 "mind": "11",
@@ -65,14 +63,13 @@
                 "intelligence": "9",
                 "faith": "8",
                 "arcane": "14"
-            }
+            
         },
         {
             "id": "17f69d1f5f1l0i32grxfonsq64huhl",
             "name": "Prisoner",
             "image": "https://eldenring.fanapis.com/images/classes/17f69d1f5f1l0i32grxfonsq64huhl.png",
             "description": "A prisoner bound in an iron mask. Studied in glintstone sorcery, having lived among the elite prior to sentencing.",
-            "stats": {
                 "level": "9",
                 "vigor": "11",
                 "mind": "12",
@@ -82,14 +79,13 @@
                 "intelligence": "14",
                 "faith": "6",
                 "arcane": "9"
-            }
+            
         },
         {
             "id": "17f69db959fl0i32hhpwdbjko0bj57",
             "name": "Vagabond",
             "image": "https://eldenring.fanapis.com/images/classes/17f69db959fl0i32hhpwdbjko0bj57.png",
             "description": "A knight exiled from their homeland to wander. A solid, armor-clad origin.",
-            "stats": {
                 "level": "9",
                 "vigor": "15",
                 "mind": "10",
@@ -99,14 +95,13 @@
                 "intelligence": "9",
                 "faith": "9",
                 "arcane": "7"
-            }
+            
         },
         {
             "id": "17f69774a83l0i32hjagb1nwcs1hne",
             "name": "Confessor",
             "image": "https://eldenring.fanapis.com/images/classes/17f69774a83l0i32hjagb1nwcs1hne.png",
             "description": "A church spy adept at covert operations. Equally adept with a sword as they are with incantations",
-            "stats": {
                 "level": "10",
                 "vigor": "10",
                 "mind": "13",
@@ -116,14 +111,13 @@
                 "intelligence": "9",
                 "faith": "14",
                 "arcane": "9"
-            }
+            
         },
         {
             "id": "17f69d4ac46l0i32hju3peo5nijzbj",
             "name": "Wretch",
             "image": "https://eldenring.fanapis.com/images/classes/17f69d4ac46l0i32hju3peo5nijzbj.png",
             "description": "A poor purposeless osd naked as they day they were born. A nice club is all they have",
-            "stats": {
                 "level": "1",
                 "vigor": "10",
                 "mind": "10",
@@ -133,14 +127,13 @@
                 "intelligence": "10",
                 "faith": "10",
                 "arcane": "10"
-            }
+            
         },
         {
             "id": "17f69932fefl0i32hlnekz682ixnvc",
             "name": "Prophet",
             "image": "https://eldenring.fanapis.com/images/classes/17f69932fefl0i32hlnekz682ixnvc.png",
             "description": "A seer ostracized for inauspicious prophecies. Well versed in healing incantations",
-            "stats": {
                 "level": "7",
                 "vigor": "10",
                 "mind": "14",
@@ -150,14 +143,13 @@
                 "intelligence": "7",
                 "faith": "16",
                 "arcane": "10"
-            }
+            
         },
         {
             "id": "17f699f7f4cl0i32huaj53vkdxeh7b",
             "name": "Samurai",
             "image": "https://eldenring.fanapis.com/images/classes/17f699f7f4cl0i32huaj53vkdxeh7b.png",
             "description": "A capable fighter from the distant land of reeds. Handy with Katana and Longbows",
-            "stats": {
                 "level": "9",
                 "vigor": "12",
                 "mind": "11",
@@ -167,6 +159,6 @@
                 "intelligence": "9",
                 "faith": "8",
                 "arcane": "8"
-            }
+            
         }
     ]

@@ -9,37 +9,19 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
-import { Button } from 'bootstrap';
 
 
 
 function ER_webpage() {
+      const [value, setValue] = useState('');   
+      let result = Data.filter(function(el){return el.name == "Warrior"})[0].vigor
 
-    const getDropdownValue = () => {
-        
-        //Finds name of dropdown
-        const value = "Hero";
-        return value;
-      };
+      console.log(result)
 
-      const getDropdownStat= () => {
-        
-        const filteredProducts = Data.filter(statValue => statValue.vigor === statValue.name.match(value)).map(post=>(post.vigor))
-        return filteredProducts;
-      }; 
-
-      const [value, setValue] = useState(getDropdownValue);
-      const [filteredProducts, setfilteredProducts] = useState(getDropdownStat);
-    
-      const handleChange = (e) => {
-        setValue(e.target.value);
-      };
-      console.log(filteredProducts)
-
-
-
+      //const result = Data.find(({vigor}) => vigor === {value});
 
       
+     
 
     return (
 
@@ -66,7 +48,7 @@ function ER_webpage() {
                     <div className="startingClass">
                         <FloatingLabel controlId="floatingSelect" label="Starting Class">
                             <Form.Group as={Col} controlId="dropdownItem">
-                                <Form.Control as="select" value={value} onChange={handleChange} >
+                                <Form.Control as="select" value={value} onChange={(e) => setValue(e.target.value)} >
                                     {
                                         Data.map(post => {
 
@@ -82,7 +64,8 @@ function ER_webpage() {
                             </Form.Group>
                         </FloatingLabel>
                         <p>{`You selected ${value}`}</p>
-                        <p>{`${value}'s stat is ${filteredProducts} `}</p>
+                        <p>{`${value}'s stat is ${result} `}</p>
+                        
                     </div>
                 </Col>
             </Row>
@@ -94,22 +77,28 @@ function ER_webpage() {
                 </ListGroup>
             </div>
 
-
-
             <div className='attributePoint'>
 
                 <Container>
                     <Row>
                         <Col>
                             <Form.Label>Attribute Points</Form.Label>
+                            {
+                                        Data.map(post => {
 
-                            <ListGroup horizontal>
-                                <ListGroup.Item>Vigor</ListGroup.Item>
-                                        {
-                                            Data.filter(statValue=> statValue.name.match(value)===statValue.vigor).map(post=>
-                                                <ListGroup.Item><NumericInput min={0} max={99} value={post.vigor} onChange={handleChange}/></ListGroup.Item>
-                                            )}
-                            </ListGroup>
+                                            return (
+                                                
+                                                <ListGroup horizontal>
+                                                <ListGroup.Item>Vigor</ListGroup.Item>
+                                                <ListGroup.Item>
+                                                    <NumericInput min={0} max={99} value={result}/>
+                                                </ListGroup.Item>
+                                                </ListGroup>                                                
+                                            )
+                                            
+                                        })
+                                    }
+
 
                             <ListGroup horizontal>
                                 <ListGroup.Item>Mind</ListGroup.Item>
