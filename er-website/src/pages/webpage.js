@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import NumericInput from 'react-numeric-input';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import useLocalStorage from './Save-progress';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -32,6 +33,9 @@ function ER_webpage() {
                 </Col>
                 <Col md>
                     <Link to='/Login'><button>login</button></Link>
+                </Col>
+                <Col md>
+                    <Link to='/Save-progress'><button>Save</button></Link>
                 </Col>
             </Row>
 
