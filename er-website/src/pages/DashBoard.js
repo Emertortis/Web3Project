@@ -34,7 +34,7 @@ function Dashboard() {
          <button className="dashboard__btn" onClick={logout}>
           Logout
          </button>
-         <button className="dashboard__btn">Profile</button>
+         <Link to='/Profile'><button className="dashboard__btn">Profile</button></Link>
          <Link to='/'><button className="dashboard__btn">Builder</button></Link>
        </div>
      </div>

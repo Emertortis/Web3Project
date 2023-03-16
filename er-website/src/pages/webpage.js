@@ -14,15 +14,18 @@ import { Link } from 'react-router-dom';
 
 
 function ER_webpage() {
-      const [value, setValue] = useState('');   
-      let result = Data.filter(function(el){return el.name == "Warrior"})[0].vigor
-
-      console.log(result)
-
-      //const result = Data.find(({vigor}) => vigor === {value});
-
+    
+      const [value, setValue] = useState('');
       
-     
+      //working stat filter,
+      //but site goes blank
+    //   const thing=value
+    //   let result = Data.filter(function(el){return el.name == thing})[0].vigor
+
+      let result = Data.filter(function(el){return el.name == "Hero"})[0].vigor
+            
+
+      console.log(value,result)
 
     return (
 
@@ -55,13 +58,9 @@ function ER_webpage() {
                                 <Form.Control as="select" value={value} onChange={(e) => setValue(e.target.value)} >
                                     {
                                         Data.map(post => {
-
                                             return (
-                                                
                                                 <option>{post.name}</option> //Grabs name data from json file
-                                                
                                             )
-                                            
                                         })
                                     }
                                 </Form.Control>

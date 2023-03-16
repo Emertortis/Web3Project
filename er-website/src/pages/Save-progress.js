@@ -10,6 +10,7 @@ function getSavedValue(key, initialValue) {
     else {
         return initialValue;
     }
+    <p></p>
 }
 export default function useLocalStorage(key, initialValue) {
     let [value, setValue] = useState(() => {
@@ -21,4 +22,6 @@ export default function useLocalStorage(key, initialValue) {
     }, [value, key]);
     
     return [value, setValue];
+
 }
+
