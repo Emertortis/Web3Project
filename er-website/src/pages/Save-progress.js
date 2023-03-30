@@ -1,5 +1,4 @@
 //function that saves progress
-
 import React, {useState, useEffect} from "react";
 
 function getSavedValue(key, initialValue) {
@@ -22,6 +21,6 @@ export default function useLocalStorage(key, initialValue) {
     }, [value, key]);
     
     return [value, setValue];
-
+    alert("Error");
 }
 
