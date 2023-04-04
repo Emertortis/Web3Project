@@ -15,19 +15,18 @@ import { Link } from 'react-router-dom';
 
 function ER_webpage() {
     
-      const [value, setValue] = useState('');
-      
-      //working stat filter,
-      //but site goes blank
-    //   const thing=value
-    //   let result = Data.filter(function(el){return el.name == thing})[0].vigor
+    
+    let [value, setValue] = useState('Hero');
+ 
+       
+    //working stat filter,
+    //but site goes blank
+    //let thing=value
 
-      let result = Data.filter(function(el){return el.name == "Hero"})[0].vigor
-            
-
-      console.log(value,result)
+    let result = Data.filter(function(el){return el.name == value})[0]
 
     return (
+
 
         <div className="ER_webpage">
             <Row className='header'>
@@ -59,15 +58,18 @@ function ER_webpage() {
                                     {
                                         Data.map(post => {
                                             return (
-                                                <option>{post.name}</option> //Grabs name data from json file
+                                                <option key={post.id}>{post.name}</option> //Grabs name data from json file//Grabs name data from json file
                                             )
                                         })
+                                        
                                     }
+
                                 </Form.Control>
                             </Form.Group>
                         </FloatingLabel>
                         <p>{`You selected ${value}`}</p>
                         <p>{`${value}'s stat is ${result} `}</p>
+
                         
                     </div>
                 </Col>
@@ -88,13 +90,12 @@ function ER_webpage() {
                             <Form.Label>Attribute Points</Form.Label>
                             {
                                         Data.map(post => {
-
                                             return (
                                                 
                                                 <ListGroup horizontal>
                                                 <ListGroup.Item>Vigor</ListGroup.Item>
                                                 <ListGroup.Item>
-                                                    <NumericInput min={0} max={99} value={result}/>
+                                                    <NumericInput min={0} max={99} key={post.id} value={(result).vigor}/>
                                                 </ListGroup.Item>
                                                 </ListGroup>                                                
                                             )
@@ -240,4 +241,5 @@ function ER_webpage() {
         </div>
     );
 }
+
 export default ER_webpage;
