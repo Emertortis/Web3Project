@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
+import Fetch from './fetch';
 
 
 
@@ -27,7 +28,9 @@ function ER_webpage() {
 
     return (
 
+        <div>
 
+        
         <div className="ER_webpage">
             <Row className='header'>
                 <Col md>
@@ -233,11 +236,10 @@ function ER_webpage() {
                     </Row>
                 </Container>
             </div>
-
-
-
-
-
+        </div>
+        <div>
+            <Fetch/>
+        </div>
         </div>
     );
 }
