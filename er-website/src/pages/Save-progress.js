@@ -1,5 +1,6 @@
 //function that saves progress
 import React, {useState, useEffect} from "react";
+import {View, Text, AsyncStorage} from 'react-native';
 
 function getSavedValue(key, initialValue) {
     const savedValue = JSON.parse(localStorage.getItem(key));
@@ -11,6 +12,23 @@ function getSavedValue(key, initialValue) {
     }
     <p></p>
 }
+
+//Getting Data
+getItemStorage = async (key) => {
+    try {
+        const value = await AsyncStorage.getItem(key);
+        if(value !== null) {
+            return value
+        } else {
+            console.log("Read the data error");
+        }
+    }
+        catch (error) {
+            console.log("Read the data error");
+        }
+    
+}
+
 export default function useLocalStorage(key, initialValue) {
     let [value, setValue] = useState(() => {
         return getSavedValue(key, initialValue);
@@ -20,7 +38,7 @@ export default function useLocalStorage(key, initialValue) {
         localStorage.setItem(key, JSON.stringify(value));
     }, [value, key]);
     
-    return [value, setValue];
-    alert("Error");
+    return [value, setValue]; 
+
 }
 
