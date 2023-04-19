@@ -14,103 +14,117 @@ import Fetch from './fetch';
 
 function ER_webpage() {
 
-  let [value, setValue] = useState('Hero');
+    let [value, setValue] = useState('Hero');
 
-  let result = Data.filter(function (el) { return el.name == value })[0]
+    let result = Data.filter(function (el) { return el.name == value })[0]
 
-  return (
-    <div>
-      <div className="ER_webpage">
-        <Row className='header'>
-          <Col md>
-            <h1>Elden Ring Character Builder</h1>
-          </Col>
-          <Col md>
-            <Link to='/Login'><button>login</button></Link>
-            <Link to='/Save-progress'><button>Save</button></Link>
-          </Col>
-        </Row>
+    return (
+        <div>
+            <div className="ER_webpage">
+                <Row className='header'>
+                    <Col md>
+                        <h1>Elden Ring Character Builder</h1>
+                    </Col>
+                    <Col md>
+                        <Link to='/Login'><button>login</button></Link>
+                        <Link to='/Save-progress'><button>Save</button></Link>
+                    </Col>
+                </Row>
 
-        <Row className="g-2">
-          <Col md>
-            <div className="characterName">
-              <FloatingLabel label="Character Name">
-                <Form.Control type="text" placeholder="Character Name" />
-              </FloatingLabel>
-            </div>
-          </Col>
+                <Row className="g-2">
+                    <Col md>
+                        <div className="characterName">
+                            <FloatingLabel label="Character Name">
+                                <Form.Control type="text" placeholder="Character Name" />
+                            </FloatingLabel>
+                        </div>
+                    </Col>
 
-          <Col md>
-            <div className="startingClass">
-              <FloatingLabel controlId="floatingSelect">
-                <Form.Group as={Col} controlId="dropdownItem">
-                  <Form.Control as="select" value={value} onChange={(e) => setValue(e.target.value)} >
-                    {Data.map(post => {
-                      return <option key={post.id}>{post.name}</option>
-                    })}
-                  </Form.Control>
-                </Form.Group>
-              </FloatingLabel>
-              <p>{`You selected ${value}`}</p>
-              <p>{`${value}'s stat is ${result} `}</p>
-            </div>
-          </Col>
-        </Row>
+                    <Col md>
+                        <div className="startingClass">
+                            <FloatingLabel controlId="floatingSelect">
+                                <Form.Group as={Col} controlId="dropdownItem">
+                                    <Form.Control as="select" value={value} onChange={(e) => setValue(e.target.value)} >
+                                        {Data.map(post => {
+                                            return <option key={post.id}>{post.name}</option>
+                                        })}
+                                    </Form.Control>
+                                </Form.Group>
+                            </FloatingLabel>
+                            <p>{`You selected ${value}`}</p>
+                            <p>{`${value}'s stat is ${result} `}</p>
+                        </div>
+                    </Col>
+                </Row>
 
-        <div className='playerLevel'>
-          <ListGroup horizontal>
-            <ListGroup.Item>Player level</ListGroup.Item>
-            <ListGroup.Item><NumericInput min={0} max={713} value={1} /></ListGroup.Item>
-          </ListGroup>
-        </div>
+                <div className='playerLevel'>
+                    <ListGroup horizontal>
+                        <ListGroup.Item>Player level</ListGroup.Item>
+                        <ListGroup.Item>
+                            <NumericInput min={0} max={99} value={result.level} />
+                        </ListGroup.Item>
+                    </ListGroup>
+                </div>
 
-        <div className='attributePoint'>
-          <Container>
-            <Row>
-              <Col>
-                <Form.Label>Attribute Points</Form.Label>
-                <ListGroup horizontal>
-                  <ListGroup.Item>Vigor</ListGroup.Item>
-                  <ListGroup.Item>
-                    <NumericInput min={0} max={99} value={result.vigor} />
-                  </ListGroup.Item>
-                </ListGroup>
+                <div className='attributePoint'>
+                    <Container>
+                        <Row>
+                            <Col>
+                                <Form.Label>Attribute Points</Form.Label>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Vigor</ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.vigor} />
+                                    </ListGroup.Item>
+                                </ListGroup>
 
-                <ListGroup horizontal>
-                  <ListGroup.Item>Mind</ListGroup.Item>
-                  <ListGroup.Item>
-                    <NumericInput min={0} max={99} value={result.mind} />
-                  </ListGroup.Item>
-                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Mind</ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.mind} />
+                                    </ListGroup.Item>
+                                </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Endurance</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.endurance} />
+                                    </ListGroup.Item>
                                 </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Strength</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.strength} />
+                                    </ListGroup.Item>
                                 </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Dexterity</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.dexterity} />
+                                    </ListGroup.Item>
                                 </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Intelligence</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.intelligence} />
+                                    </ListGroup.Item>
                                 </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Faith</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.faith} />
+                                    </ListGroup.Item>
                                 </ListGroup>
 
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Arcane</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <NumericInput min={0} max={99} value={result.arcane} />
+                                    </ListGroup.Item>
                                 </ListGroup>
                             </Col>
 
