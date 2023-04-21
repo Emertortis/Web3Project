@@ -223,7 +223,6 @@ function ER_webpage() {
                 </div>
             </div>
             <div>
-                <Fetch />
             </div>
         </div>
     );
