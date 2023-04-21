@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useAuthState} from "react-firebase-hooks/auth";
+import { getAuth, onAuthStateChanged} from "firebase/auth";
 import { useNavigate,Link } from "react-router-dom";
 import "./Dashboard.css";
 import { auth, db, logout } from "../firebase";
@@ -25,6 +26,25 @@ function Dashboard() {
     if (!user) return navigate("/");
     fetchUserName();
   }, [user, loading]);
+  if (user?.uid == "5gNYDnYxK2YWJjee0bR0KxWtPN02") {
+    return (
+      <div className="dashboard">
+         <div className="dashboard__container">
+          Logged in as
+           <div>{name}</div>
+           <div>{user?.email}</div>
+           <button className="dashboard__btn" onClick={logout}>
+            Logout
+           </button>
+           <Link to='/Profile'><button className="dashboard__btn">Profile</button></Link>
+           <Link to='/'><button className="dashboard__btn">Builder</button></Link>
+           <Link to='/'><button className="dashboard__btn">View current users</button></Link>
+         </div>
+       </div>
+    );
+    const uid = user.uid;
+    // ...
+  }
   return (
     <div className="dashboard">
        <div className="dashboard__container">
@@ -39,6 +59,7 @@ function Dashboard() {
        </div>
      </div>
   );
+
 }
 
 
