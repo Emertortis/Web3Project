@@ -45,9 +45,9 @@ function Register() {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
-                <button className="register__btn" onClick={register}>
+                <Link to='/'><button className="register__btn" onClick={register}>
                     Register
-                </button>
+                </button></Link>
                 <button
                     className="register__btn register__google"
                     onClick={signInWithGoogle}

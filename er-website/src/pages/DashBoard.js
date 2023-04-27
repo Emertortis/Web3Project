@@ -26,6 +26,9 @@ function Dashboard() {
     if (!user) return navigate("/");
     fetchUserName();
   }, [user, loading]);
+
+  //Admin page starts here
+  //if account logged in is from that account ID
   if (user?.uid == "5gNYDnYxK2YWJjee0bR0KxWtPN02") {
     return (
       <div className="dashboard">
@@ -38,7 +41,7 @@ function Dashboard() {
            </button>
            <Link to='/Profile'><button className="dashboard__btn">Profile</button></Link>
            <Link to='/'><button className="dashboard__btn">Builder</button></Link>
-           <Link to='/'><button className="dashboard__btn">View current users</button></Link>
+           <Link to='/ViewUsers'><button className="dashboard__btn">View current users</button></Link>
          </div>
        </div>
     );

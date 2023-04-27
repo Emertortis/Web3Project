@@ -6,6 +6,7 @@ import Reset from './pages/Reset';
 import Profile from './pages/Profile';
 import Register from './pages/Register';
 import ER_webpage from './pages/webpage';
+import ViewUsers from './pages/ViewUsers';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/register" element={<Register/>} />
           <Route exact path="/reset" element={<Reset/>} />
           <Route exact path="/dashboard" element={<Dashboard/>} />
+          <Route exact path="/viewUsers" element={<ViewUsers/>} />
         </Routes>
       </Router>
     </div>
