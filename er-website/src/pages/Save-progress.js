@@ -1,6 +1,7 @@
 //function that saves progress
 import React, {useState, useEffect} from "react";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, GoogleAuthProvider } from "../firebase";
+import { getFirestore, query, addDoc } from "firebase/firestore";
 
 function getSavedValue(key, initialValue) {
     const savedValue = JSON.parse(localStorage.getItem(key));
@@ -13,6 +14,7 @@ function getSavedValue(key, initialValue) {
 }
 
 //Getting Data
+
 // getItemStorage = async (key) => {
 //     try {
 //         const value = await AsyncStorage.getItem(key);
@@ -37,6 +39,7 @@ export default function useLocalStorage(key, initialValue) {
         localStorage.setItem(key, JSON.stringify(value));
     }, [value, key]);
     
+
     return [value, setValue]; 
 
 }
