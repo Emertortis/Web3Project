@@ -10,7 +10,6 @@ function getSavedValue(key, initialValue) {
     else {
         return initialValue;
     }
-    <p></p>
 }
 
 //Getting Data
