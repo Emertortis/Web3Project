@@ -48,12 +48,15 @@ function Register() {
                 <Link to='/'><button className="register__btn" onClick={register}>
                     Register
                 </button></Link>
+                <Link to='/'>
                 <button
                     className="register__btn register__google"
                     onClick={signInWithGoogle}
                 >
                     Register with Google
-                </button>
+                </button>                    
+                </Link>
+
                 <div>
                     Already have an account? <Link to="/Login">Login</Link> now.
                 </div>

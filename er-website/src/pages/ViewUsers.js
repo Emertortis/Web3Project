@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { db, logout } from "../firebase";
+import { db, logout, auth } from "../firebase";
 import { Link } from "react-router-dom";
 import { collection, query, where, getDocs, deleteDoc } from "firebase/firestore";
+import { sendPasswordResetEmail } from "firebase/auth"; // Import the auth function
 import "./ViewUsers.css";
 
 function ViewUsers() {
-
-    //function that displays user info
+    // Function that displays user info
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -22,8 +22,8 @@ function ViewUsers() {
         fetchUsers();
     }, []);
 
-    //function to delete user
-    const [name, setname] = useState("");
+    // Function to delete user
+    const [name, setName] = useState("");
 
     const deleteUser = async () => {
         const q = query(collection(db, "users"), where("name", "==", name));
@@ -35,45 +35,56 @@ function ViewUsers() {
         querySnapshot.forEach((doc) => {
             deleteDoc(doc.ref);
             alert("User deleted successfully");
-            setname("");
+            setName("");
         });
+    };
+
+    // Function to reset user password
+    const resetPassword = async (email) => {
+        try {
+            await sendPasswordResetEmail(auth, email);
+            alert("Password reset email sent successfully");
+        } catch (error) {
+            console.error(error);
+            alert("Error sending password reset email");
+        }
     };
 
     return (
         <div>
             <center>
                 <h2>Saved Logins</h2>
+                <Link to="/Login">
                 <button className="dashboard__btn" onClick={logout}>
                     Logout
                 </button>
-                <Link to='/'><button className="dashboard__btn">Builder</button></Link>
+                </Link>
+
+                <Link to='/'>
+                    <button className="dashboard__btn">Builder</button>
+                </Link>
                 <div>
-
-
                     <h2>Delete User</h2>
-                    <input className="ViewUsers_deleteText"
+                    <input
+                        className="ViewUsers_deleteText"
                         type="text"
                         placeholder="Enter full user name to delete"
                         value={name}
-                        onChange={(e) => setname(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                     />
                     <button onClick={deleteUser}>Delete User</button>
                 </div>
-
-
             </center>
             {users.map((user, index) => (
-                <center>
-                    <div className="ViewUsers_display" key={index}>
+                <center key={index}>
+                    <div className="ViewUsers_display">
                         <h1>Name: {user.name}</h1>
                         <p>Email: {user.email}</p>
-                        <button>
-                            <div>
-                                <Link to="/reset">Reset Password</Link>
-                            </div>                        </button>
+                        <button onClick={() => resetPassword(user.email)}>
+                            Reset Password
+                        </button>
                     </div>
                 </center>
-
             ))}
         </div>
     );
