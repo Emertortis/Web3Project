@@ -1,6 +1,5 @@
 //function that saves progress
 import React, {useState, useEffect} from "react";
-// import {View, Text, AsyncStorage} from 'react-native';
 
 function getSavedValue(key, initialValue) {
     const savedValue = JSON.parse(localStorage.getItem(key));
