@@ -1,5 +1,6 @@
 //function that saves progress
 import React, {useState, useEffect} from "react";
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
 function getSavedValue(key, initialValue) {
     const savedValue = JSON.parse(localStorage.getItem(key));
@@ -25,7 +26,7 @@ function getSavedValue(key, initialValue) {
 //             console.log("Read the data error");
 //         }
     
-// }
+//}
 
 export default function useLocalStorage(key, initialValue) {
     let [value, setValue] = useState(() => {
