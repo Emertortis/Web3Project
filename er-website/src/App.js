@@ -7,6 +7,7 @@ import Profile from './pages/Profile';
 import Register from './pages/Register';
 import ER_webpage from './pages/webpage';
 import ViewUsers from './pages/ViewUsers';
+import SaveCharacter from './pages/SaveCharacter';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/reset" element={<Reset/>} />
           <Route exact path="/dashboard" element={<Dashboard/>} />
           <Route exact path="/viewUsers" element={<ViewUsers/>} />
+          <Route path='/SaveCharacter' element={<SaveCharacter/>}/>
         </Routes>
       </Router>
     </div>

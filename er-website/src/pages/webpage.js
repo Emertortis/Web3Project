@@ -3,20 +3,39 @@ import React, { useState, useEffect } from 'react';
 import NumericInput from 'react-numeric-input';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import useLocalStorage from './Save-progress';
-import Col from 'react-bootstrap/Col';
+import SaveCharacter from './SaveCharacter';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
 import Fetch from './fetch';
+import { Col } from 'react-bootstrap';
 
 function ER_webpage() {
 
     let [value, setValue] = useState('Hero');
 
     let result = Data.filter(function (el) { return el.name == value })[0]
+    
+    //save feature for character
+    function handleSave() {
+        const characterName = document.querySelector(".characterName input").value;
+        const stats = {
+            level: result.level,
+            vigor: result.vigor,
+            mind: result.mind,
+            endurance: result.endurance,
+            strength: result.strength,
+            dexterity: result.dexterity,
+            intelligence: result.intelligence,
+            faith: result.faith,
+            arcane: result.arcane
+        };
+        SaveCharacter(characterName, stats);
+        
+    }
+
 
     return (
         <div>
@@ -26,8 +45,9 @@ function ER_webpage() {
                         <h1>Elden Ring Character Builder</h1>
                     </Col>
                     <Col md>
-                        <Link to='/Login'><button>login</button></Link>
-                        <Link to='/Save-progress'><button>Save</button></Link>
+                    <Link to='/Login'><button>login</button></Link>
+                        <Link to="/SaveCharacter"> <button onClick={handleSave}>Save</button>
+                        </Link>
                     </Col>
                 </Row>
 
@@ -126,6 +146,15 @@ function ER_webpage() {
                                         <NumericInput min={0} max={99} value={result.arcane} />
                                     </ListGroup.Item>
                                 </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Runes</ListGroup.Item>
+                                    <ListGroup.Item>Total Spent
+                                        <NumericInput />
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>Required For next Level
+                                        <NumericInput />
+                                    </ListGroup.Item>
+                                </ListGroup>
                             </Col>
 
 
@@ -155,33 +184,69 @@ function ER_webpage() {
                         </Row>
                         <Row>
                             <Col>
-                                <Form.Label>Attack Power</Form.Label>
+                                <Form.Label>Equipment</Form.Label>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>R Armament 1</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>Weapons</ListGroup.Item>
+                                    <ListGroup.Item>Right Hand 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Right Hand 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Right Hand 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Left Hand 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Left Hand 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Left Hand 3<NumericInput /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>R Armament 2</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes</ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 3<NumericInput /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>R Armament 3</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>Arrows</ListGroup.Item>
+                                    <ListGroup.Item>Arrow 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Arrow 2<NumericInput /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>L Armament 1</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>Bolts</ListGroup.Item>
+                                    <ListGroup.Item>Bolt 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Bolt 2<NumericInput /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>L Armament 2</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                <ListGroup.Item>Talismans</ListGroup.Item>
+                                    <ListGroup.Item>Talisman 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 4<NumericInput /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>L Armament 3</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput min={0} max={99} value={1} /></ListGroup.Item>
+                                    <ListGroup.Item>Memory Slots</ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 1<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 4<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 5<NumericInput /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Memory Slots</ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 6<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 7<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 8<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 9<NumericInput /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Armor</ListGroup.Item>
+                                    <ListGroup.Item>Head<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Chest<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Arms<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Legs<NumericInput /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Spirit</ListGroup.Item>
+                                    <ListGroup.Item><NumericInput /></ListGroup.Item>
                                 </ListGroup>
                             </Col>
-
 
                             <Col>
                                 <Form.Label>Defense Power</Form.Label>
