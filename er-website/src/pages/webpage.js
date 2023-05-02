@@ -71,8 +71,6 @@ function ER_webpage() {
                                     </Form.Control>
                                 </Form.Group>
                             </FloatingLabel>
-                            <p>{`You selected ${value}`}</p>
-                            <p>{`${value}'s stat is ${result} `}</p>
                         </div>
                     </Col>
                 </Row>
