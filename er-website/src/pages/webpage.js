@@ -3,32 +3,24 @@ import React, { useState, useEffect } from 'react';
 import NumericInput from 'react-numeric-input';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-<<<<<<< HEAD
 import Col from 'react-bootstrap/Col';
-=======
 import SaveCharacter from './SaveCharacter';
->>>>>>> aef3246faadab6abdccb0cbf4cdf58bbf7ec4e1c
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
 import Fetch from './fetch';
-<<<<<<< HEAD
 import useLocalStorage from './Save-progress';
-import Runes from './Runes';
-import WeaponsDropdown from './Weapons';
-import ShieldsDropdown from './Shields';
-import AmmosDropdown from './Ammos';
-import ArmorDropdown from './Armors';
-import SorceriesIncantationsDropdown from './Soceries-Incantaions';
-import TalismansDropdown from './Talismans';
-import AshesDropdown from './Ashes';
-import SpiritDropdown from './Spirits';
-
-=======
-import { Col } from 'react-bootstrap';
->>>>>>> aef3246faadab6abdccb0cbf4cdf58bbf7ec4e1c
+import Runes from './Dropdowns/Runes';
+import WeaponsDropdown from './Dropdowns/Weapons';
+import ShieldsDropdown from './Dropdowns/Shields';
+import AmmosDropdown from './Dropdowns/Ammos';
+import ArmorDropdown from './Dropdowns/Armors';
+import SorceriesIncantationsDropdown from './Dropdowns/Soceries-Incantaions';
+import TalismansDropdown from './Dropdowns/Talismans';
+import AshesDropdown from './Dropdowns/Ashes';
+import SpiritDropdown from './Dropdowns/Spirits';
 
 function ER_webpage() {
 
