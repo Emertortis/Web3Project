@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import NumericInput from 'react-numeric-input';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-import useLocalStorage from './Save-progress';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
@@ -11,6 +10,17 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
 import Fetch from './fetch';
+import useLocalStorage from './Save-progress';
+import Runes from './Runes';
+import WeaponsDropdown from './Weapons';
+import ShieldsDropdown from './Shields';
+import AmmosDropdown from './Ammos';
+import ArmorDropdown from './Armors';
+import SorceriesIncantationsDropdown from './Soceries-Incantaions';
+import TalismansDropdown from './Talismans';
+import AshesDropdown from './Ashes';
+import SpiritDropdown from './Spirits';
+
 
 function ER_webpage() {
 
@@ -63,6 +73,7 @@ function ER_webpage() {
                         </ListGroup.Item>
                     </ListGroup>
                 </div>
+                <Runes level={result.level} />
 
                 <div className='attributePoint'>
                     <Container>
@@ -124,15 +135,6 @@ function ER_webpage() {
                                         <NumericInput min={0} max={99} value={result.arcane} />
                                     </ListGroup.Item>
                                 </ListGroup>
-                                <ListGroup horizontal>
-                                    <ListGroup.Item>Runes</ListGroup.Item>
-                                    <ListGroup.Item>Total Spent
-                                        <NumericInput />
-                                    </ListGroup.Item>
-                                    <ListGroup.Item>Required For next Level
-                                        <NumericInput />
-                                    </ListGroup.Item>
-                                </ListGroup>
                             </Col>
 
 
@@ -164,65 +166,71 @@ function ER_webpage() {
                             <Col>
                                 <Form.Label>Equipment</Form.Label>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>Weapons</ListGroup.Item>
-                                    <ListGroup.Item>Right Hand 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Right Hand 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Right Hand 3<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Left Hand 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Left Hand 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Left Hand 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Weapons Right Hand</ListGroup.Item>
+                                    <ListGroup.Item>Right Hand 1 <WeaponsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Right Hand 2<WeaponsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Right Hand shield<ShieldsDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                    <ListGroup.Item>Ashes</ListGroup.Item>
-                                    <ListGroup.Item>Ashes Right Hand 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Ashes Right Hand 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Ashes Right Hand 3<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Ashes Left Hand 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Ashes Left Hand 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Ashes Left Hand 3<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Weapons left Hand</ListGroup.Item>
+                                    <ListGroup.Item>Left Hand 1<WeaponsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Left Hand 2<WeaponsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Left Hand shield<ShieldsDropdown /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Ashes Right Hand</ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 1<AshesDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 2<AshesDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Right Hand 3<AshesDropdown /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Ashes Left Hand</ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 1<AshesDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 2<AshesDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Ashes Left Hand 3<AshesDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Arrows</ListGroup.Item>
-                                    <ListGroup.Item>Arrow 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Arrow 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Arrow 1<AmmosDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Arrow 2<AmmosDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Bolts</ListGroup.Item>
-                                    <ListGroup.Item>Bolt 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Bolt 2<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Bolt 1<AmmosDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Bolt 2<AmmosDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
-                                <ListGroup.Item>Talismans</ListGroup.Item>
-                                    <ListGroup.Item>Talisman 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Talisman 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Talisman 3<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Talisman 4<NumericInput /></ListGroup.Item>
-                                </ListGroup>
-                                <ListGroup horizontal>
-                                    <ListGroup.Item>Memory Slots</ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 1<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 2<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 3<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 4<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 5<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Talismans</ListGroup.Item>
+                                    <ListGroup.Item>Talisman 1<TalismansDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 2<TalismansDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 3<TalismansDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Talisman 4<TalismansDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Memory Slots</ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 6<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 7<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 8<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Incantations/Sorceries 9<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 1<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 2<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 3<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 4<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 5<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                </ListGroup>
+                                <ListGroup horizontal>
+                                    <ListGroup.Item>Memory Slots</ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 6<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 7<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 8<SorceriesIncantationsDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Incantations/Sorceries 9<SorceriesIncantationsDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Armor</ListGroup.Item>
-                                    <ListGroup.Item>Head<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Chest<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Arms<NumericInput /></ListGroup.Item>
-                                    <ListGroup.Item>Legs<NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item>Head<ArmorDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Chest<ArmorDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Arms<ArmorDropdown /></ListGroup.Item>
+                                    <ListGroup.Item>Legs<ArmorDropdown /></ListGroup.Item>
                                 </ListGroup>
                                 <ListGroup horizontal>
                                     <ListGroup.Item>Spirit</ListGroup.Item>
-                                    <ListGroup.Item><NumericInput /></ListGroup.Item>
+                                    <ListGroup.Item><SpiritDropdown /></ListGroup.Item>
                                 </ListGroup>
                             </Col>
 
