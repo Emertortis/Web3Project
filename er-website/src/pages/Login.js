@@ -42,6 +42,9 @@ function Login() {
         <button className="login__btn login__google" onClick={signInWithGoogle}>
           Login with Google
         </button>
+        <Link to='/'>
+                    <button className="dashboard__btn">Builder</button>
+                </Link>
         <div>
           <Link to="/reset">Forgot Password</Link>
         </div>

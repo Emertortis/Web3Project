@@ -3,13 +3,18 @@ import React, { useState, useEffect } from 'react';
 import NumericInput from 'react-numeric-input';
 import Container from 'react-bootstrap/Container';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
+<<<<<<< HEAD
 import Col from 'react-bootstrap/Col';
+=======
+import SaveCharacter from './SaveCharacter';
+>>>>>>> aef3246faadab6abdccb0cbf4cdf58bbf7ec4e1c
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Data from './classData/Class.json'
 import { Link } from 'react-router-dom';
 import Fetch from './fetch';
+<<<<<<< HEAD
 import useLocalStorage from './Save-progress';
 import Runes from './Runes';
 import WeaponsDropdown from './Weapons';
@@ -21,12 +26,34 @@ import TalismansDropdown from './Talismans';
 import AshesDropdown from './Ashes';
 import SpiritDropdown from './Spirits';
 
+=======
+import { Col } from 'react-bootstrap';
+>>>>>>> aef3246faadab6abdccb0cbf4cdf58bbf7ec4e1c
 
 function ER_webpage() {
 
     let [value, setValue] = useState('Hero');
 
     let result = Data.filter(function (el) { return el.name == value })[0]
+    
+    //save feature for character
+    function handleSave() {
+        const characterName = document.querySelector(".characterName input").value;
+        const stats = {
+            level: result.level,
+            vigor: result.vigor,
+            mind: result.mind,
+            endurance: result.endurance,
+            strength: result.strength,
+            dexterity: result.dexterity,
+            intelligence: result.intelligence,
+            faith: result.faith,
+            arcane: result.arcane
+        };
+        SaveCharacter(characterName, stats);
+        
+    }
+
 
     return (
         <div>
@@ -36,8 +63,9 @@ function ER_webpage() {
                         <h1>Elden Ring Character Builder</h1>
                     </Col>
                     <Col md>
-                        <Link to='/Login'><button>login</button></Link>
-                        <Link to='/Save-progress'><button>Save</button></Link>
+                    <Link to='/Login'><button>login</button></Link>
+                        <Link to="/SaveCharacter"> <button onClick={handleSave}>Save</button>
+                        </Link>
                     </Col>
                 </Row>
 
@@ -233,7 +261,6 @@ function ER_webpage() {
                                     <ListGroup.Item><SpiritDropdown /></ListGroup.Item>
                                 </ListGroup>
                             </Col>
-
 
                             <Col>
                                 <Form.Label>Defense Power</Form.Label>
