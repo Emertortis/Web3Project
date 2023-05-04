@@ -6,6 +6,7 @@ import {db} from '../firebase';
 //Import issue?
 function SaveCharacter(characterName, stats) {
   db.collection('savedCharacters')
+  
     .doc(characterName)
     .set(stats)
     .then(() => {
