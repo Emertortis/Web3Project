@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path='/' element={<ER_webpage/>} />
+          <Route path='https://emertortis.github.io/Web3Project/' element={<ER_webpage/>} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/profile' element={<Profile/>}/>
           <Route exact path="/register" element={<Register/>} />
