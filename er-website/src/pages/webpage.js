@@ -27,7 +27,7 @@ function ER_webpage() {
     let [value, setValue] = useState('Hero');
 
     let result = Data.filter(function (el) { return el.name == value })[0]
-    
+
     //save feature for character
     function handleSave() {
         const characterName = document.querySelector(".characterName input").value;
@@ -43,7 +43,7 @@ function ER_webpage() {
             arcane: result.arcane
         };
         SaveCharacter(characterName, stats);
-        
+
     }
 
 
@@ -55,7 +55,7 @@ function ER_webpage() {
                         <h1>Elden Ring Character Builder</h1>
                     </Col>
                     <Col md>
-                    <Link to='/Login'><button>login</button></Link>
+                        <Link to='/Login'><button>login</button></Link>
                         <Link to="/SaveCharacter"> <button onClick={handleSave}>Save</button>
                         </Link>
                     </Col>
